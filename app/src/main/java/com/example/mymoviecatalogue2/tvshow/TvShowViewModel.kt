@@ -10,5 +10,5 @@ import com.example.mymoviecatalogue2.vo.Resource
 
 class TvShowViewModel(private val MovieTvRepository: MovieTvRepository) : ViewModel() {
 
-    fun getTvShow(): LiveData<Resource<PagedList<TvShow>>> = MovieTvRepository.loadAllTvShow()
+    fun getTvShow(): LiveData<Resource<PagedList<TvShow>>> = MovieTvRepository.getTvPopular()
 }

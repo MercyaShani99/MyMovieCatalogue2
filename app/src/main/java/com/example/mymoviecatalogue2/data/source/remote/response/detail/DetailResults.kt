@@ -13,6 +13,9 @@ data class DetailResults (
     @field:SerializedName("genres")
     val genre: List<MovieGenres>,
 
+    @field:SerializedName("release_date")
+    val releaseDate: String,
+
     @field:SerializedName("overview")
     val overview: String,
 

@@ -6,7 +6,7 @@ import androidx.room.*
 import com.example.mymoviecatalogue2.data.source.local.entity.Movie
 import com.example.mymoviecatalogue2.data.source.local.entity.TvShow
 @Dao
-interface CatalogueDao {
+interface MovieTvDao {
 
 
     @Query("SELECT * FROM movie_data")

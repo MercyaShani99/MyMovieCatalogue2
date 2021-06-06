@@ -15,12 +15,12 @@ class DetailViewModel(private val movieTvRepository: MovieTvRepository) : ViewMo
     lateinit var dataDetailTv: LiveData<Resource<TvShow>>
 
     fun getDetailMovie(catalogueId: Int): LiveData<Resource<Movie>> {
-        dataDetailMovie = movieTvRepository.loadDetailMovie(catalogueId)
+        dataDetailMovie = movieTvRepository.getDetailMovie(catalogueId)
         return dataDetailMovie
     }
 
     fun getDetailTvShow(catalogueId: Int) : LiveData<Resource<TvShow>> {
-        dataDetailTv = movieTvRepository.loadDetailTvShow(catalogueId)
+        dataDetailTv = movieTvRepository.getDetailTvShow(catalogueId)
         return dataDetailTv
     }
 
@@ -30,7 +30,7 @@ class DetailViewModel(private val movieTvRepository: MovieTvRepository) : ViewMo
         if(dataMovie?.data != null) {
             Log.d("SetFav", "InsideMovie")
             val newState = !dataMovie.data.isFav
-            movieTvRepository.setFavMovie(dataMovie.data, newState)
+            movieTvRepository.setFavoriteMovie(dataMovie.data, newState)
         }
     }
 
@@ -40,7 +40,7 @@ class DetailViewModel(private val movieTvRepository: MovieTvRepository) : ViewMo
         if (dataTv?.data != null) {
             Log.d("SetFav", "InsideMovie")
             val newState = !dataTv.data.isFav
-            movieTvRepository.setFavTv(dataTv.data, newState)
+            movieTvRepository.setFavoriteTv(dataTv.data, newState)
         }
     }
 

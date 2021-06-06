@@ -9,17 +9,17 @@ import com.example.mymoviecatalogue2.data.source.local.entity.TvShow
 
 class FavoriteViewModel(private val movieTvRepository: MovieTvRepository): ViewModel() {
 
-    fun getListFavMovie(): LiveData<PagedList<Movie>> = movieTvRepository.getFavMovie()
+    fun getListFavMovie(): LiveData<PagedList<Movie>> = movieTvRepository.getFavoriteMovie()
 
     fun setListFavMovie(movieEntity: Movie) {
         val newState = !movieEntity.isFav
-        movieTvRepository.setFavMovie(movieEntity, newState)
+        movieTvRepository.setFavoriteMovie(movieEntity, newState)
     }
 
-    fun getListFavTv(): LiveData<PagedList<TvShow>> = movieTvRepository.getFavTv()
+    fun getListFavTv(): LiveData<PagedList<TvShow>> = movieTvRepository.getFavoriteTv()
 
     fun setListFavTv(tvShowEntity: TvShow) {
         val newState = !tvShowEntity.isFav
-        movieTvRepository.setFavTv(tvShowEntity, newState)
+        movieTvRepository.setFavoriteTv(tvShowEntity, newState)
     }
 }

@@ -3,6 +3,7 @@ package com.example.mymoviecatalogue2.data.source.remote
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.mymoviecatalogue2.Constant.Companion.API_KEY
 import com.example.mymoviecatalogue2.data.source.remote.api.ApiConfig
 import com.example.mymoviecatalogue2.data.source.remote.response.detail.DetailResults
 import com.example.mymoviecatalogue2.data.source.remote.response.detail.DetailTvResults
@@ -31,7 +32,7 @@ class RemoteDataSource {
     fun getListMovies(): LiveData<ApiResponse<List<MovieResults>>> {
         EspressoIdlingResource.increment()
         val result = MutableLiveData<ApiResponse<List<MovieResults>>>()
-        ApiConfig.getApiService().getMovies()
+        ApiConfig.getApiService().getMovies(API_KEY)
             .enqueue(object : Callback<MovieResponse> {
                 override fun onResponse(
                     call: Call<MovieResponse>,
@@ -54,7 +55,7 @@ class RemoteDataSource {
     fun getListTvShow(): LiveData<ApiResponse<List<TvResults>>> {
         EspressoIdlingResource.increment()
         val result = MutableLiveData<ApiResponse<List<TvResults>>>()
-        ApiConfig.getApiService().getTv()
+        ApiConfig.getApiService().getTv(API_KEY)
             .enqueue(object : Callback<TvResponse> {
                 override fun onResponse(
                     call: Call<TvResponse>,
@@ -77,7 +78,7 @@ class RemoteDataSource {
     fun getDetailMovies(id: Int): LiveData<ApiResponse<DetailResults>> {
         EspressoIdlingResource.increment()
         val result = MutableLiveData<ApiResponse<DetailResults>>()
-        ApiConfig.getApiService().getDetailMovie(id)
+        ApiConfig.getApiService().getDetailMovie(id, API_KEY)
             .enqueue(object : Callback<DetailResults> {
                 override fun onResponse(
                     call: Call<DetailResults>,
@@ -100,7 +101,7 @@ class RemoteDataSource {
     fun getDetailTvShows(id: Int): LiveData<ApiResponse<DetailTvResults>> {
         EspressoIdlingResource.increment()
         val result = MutableLiveData<ApiResponse<DetailTvResults>>()
-        ApiConfig.getApiService().getDetailTv(id)
+        ApiConfig.getApiService().getDetailTv(id, API_KEY)
             .enqueue(object : Callback<DetailTvResults> {
                 override fun onResponse(
                     call: Call<DetailTvResults>,

@@ -9,21 +9,21 @@ import com.example.mymoviecatalogue2.data.source.local.entity.TvShow
 
 @Database(
     entities = [Movie::class, TvShow::class],
-    version = 3,
+    version = 6,
     exportSchema = false
 )
-abstract class CatalogueDB: RoomDatabase() {
-    abstract fun catalogueDao(): CatalogueDao
+abstract class MovieTvDatabase: RoomDatabase() {
+    abstract fun catalogueDao(): MovieTvDao
 
     companion object {
         @Volatile
-        private var INSTANCE: CatalogueDB? = null
+        private var INSTANCE: MovieTvDatabase? = null
 
-        fun getInstance(context: Context): CatalogueDB =
+        fun getInstance(context: Context): MovieTvDatabase =
             INSTANCE ?: synchronized(this) {
                 INSTANCE ?: Room.databaseBuilder(
                     context.applicationContext,
-                    CatalogueDB::class.java,
+                    MovieTvDatabase::class.java,
                     "film.db"
                 ).fallbackToDestructiveMigration().build().apply {
                     INSTANCE = this

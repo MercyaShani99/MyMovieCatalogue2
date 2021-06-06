@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.mymoviecatalogue2.detail.DetailCatalogueActivity"
+            android:name="com.example.mymoviecatalogue2.detail.MovieTvDetail"
             android:label="@string/title_activity_detail_catalogue"
             android:parentActivityName="com.example.mymoviecatalogue2.home.HomeActivity"
             android:theme="@style/Theme.MovieCatalogue.NoActionBar">

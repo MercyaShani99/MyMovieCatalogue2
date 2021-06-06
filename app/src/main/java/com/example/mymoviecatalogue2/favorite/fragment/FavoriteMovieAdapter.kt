@@ -7,9 +7,10 @@ import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.mymoviecatalogue2.Constant
 import com.example.mymoviecatalogue2.data.source.local.entity.Movie
-import com.example.mymoviecatalogue2.detail.DetailCatalogueActivity
 import com.example.mymoviecatalogue2.databinding.ItemsMovieBinding
+import com.example.mymoviecatalogue2.detail.MovieTvDetail
 
 class FavoriteMovieAdapter: PagedListAdapter<Movie, FavoriteMovieAdapter.FavoriteMovieViewHolder>(DIFF_CALLBACK) {
     companion object {
@@ -42,13 +43,14 @@ class FavoriteMovieAdapter: PagedListAdapter<Movie, FavoriteMovieAdapter.Favorit
         fun bind(movie: Movie) {
             with(binding) {
                 tvItemTitle.text = movie.title
+                tvItemDate.text = movie.releaseDate
                 Glide.with(itemView.context)
-                    .load("https://image.tmdb.org/t/p/w500" + movie.imagePath).into(imgPoster)
+                    .load(Constant.POSTER_BASE_URL + movie.imagePath).into(imgPoster)
 
                 itemView.setOnClickListener {
-                    Intent(itemView.context, DetailCatalogueActivity::class.java).also {
-                        it.putExtra(DetailCatalogueActivity.EXTRA_CATALOGUE, movie.movieId)
-                        it.putExtra(DetailCatalogueActivity.EXTRA_TYPE, "movie")
+                    Intent(itemView.context, MovieTvDetail::class.java).also {
+                        it.putExtra(MovieTvDetail.EXTRA_CATALOGUE, movie.movieId)
+                        it.putExtra(MovieTvDetail.EXTRA_TYPE, "movie")
                         itemView.context.startActivity(it)
                     }
                 }

@@ -34,7 +34,7 @@
         tools:text="@string/title" />
 
     <TextView
-        android:id="@+id/text_genre"
+        android:id="@+id/text_date"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -46,7 +46,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/image_poster"
         app:layout_constraintTop_toBottomOf="@+id/text_title"
-        tools:text="@string/genre" />
+        tools:text="Date" />
 
     <TextView
         android:id="@+id/desc"

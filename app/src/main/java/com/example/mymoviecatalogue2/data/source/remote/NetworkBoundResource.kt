@@ -31,8 +31,11 @@ abstract class NetworkBoundResource<ResultType, RequestType>(private val appExec
     private fun onFetchFailed(){}
 
     protected abstract fun shouldFetch(data: ResultType?): Boolean
+
     protected abstract fun loadFromDb(): LiveData<ResultType>
+
     protected abstract fun createCall(): LiveData<ApiResponse<RequestType>>
+
     protected abstract fun saveCallResult(data: RequestType)
 
     private fun fetchFromNetwork(dbSource: LiveData<ResultType>) {

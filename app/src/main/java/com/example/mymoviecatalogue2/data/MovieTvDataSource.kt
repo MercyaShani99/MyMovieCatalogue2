@@ -10,17 +10,17 @@ interface MovieTvDataSource {
 
     fun getMoviePopular(): LiveData<Resource<PagedList<Movie>>>
 
-    fun loadAllTvShow(): LiveData<Resource<PagedList<TvShow>>>
+    fun getTvPopular(): LiveData<Resource<PagedList<TvShow>>>
 
-    fun loadDetailMovie(idMovie: Int): LiveData<Resource<Movie>>
+    fun getDetailMovie(idMovie: Int): LiveData<Resource<Movie>>
 
-    fun loadDetailTvShow(idTvShow: Int): LiveData<Resource<TvShow>>
+    fun getDetailTvShow(idTvShow: Int): LiveData<Resource<TvShow>>
 
-    fun setFavMovie(movie: Movie, state: Boolean)
+    fun setFavoriteMovie(movie: Movie, state: Boolean)
 
-    fun setFavTv(tv: TvShow, state: Boolean)
+    fun setFavoriteTv(tv: TvShow, state: Boolean)
 
-    fun getFavMovie(): LiveData<PagedList<Movie>>
+    fun getFavoriteMovie(): LiveData<PagedList<Movie>>
 
-    fun getFavTv(): LiveData<PagedList<TvShow>>
+    fun getFavoriteTv(): LiveData<PagedList<TvShow>>
 }
