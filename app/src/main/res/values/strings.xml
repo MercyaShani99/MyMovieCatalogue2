@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">MyMovieCatalogue2</string>
+    <string name="title_activity_detail_catalogue">Detail Catalogue</string>
+
+    <string name="title_activity_detail_course">Detail Course</string>
+
+    <string name="title">Title</string>
+    <string name="genre">Genre</string>
+    <string name="overview">Overview</string>
+
+    <string name="Movie">Movie</string>
+    <string name="TvShow">Tv Show</string>
+    <string name="menu_favorite">Favorite</string>
+    <string name="moviesId">MoviesID</string>
+    <string name="todo">TODO</string>
+    <string name="message_undo">Batalkan menghapus item sebelumnya?</string>
+    <string name="message_ok">OK</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
