@@ -31,7 +31,6 @@ class DetailViewModel(private val movieTvRepository: MovieTvRepository) : ViewMo
 
 
     fun setFavoriteMovie() {
-        Log.d("setFav", "Inside ResourceMovie")
         val dataMovie = getDetailMovie.value
         if (dataMovie != null) {
             val entity = dataMovie.data
@@ -44,7 +43,6 @@ class DetailViewModel(private val movieTvRepository: MovieTvRepository) : ViewMo
         }
 
     fun setFavoriteTv() {
-        Log.d("setFav", "Inside ResourceMovie")
         val dataTv = getDetailTvShow.value
         if (dataTv != null) {
             val entity = dataTv.data
