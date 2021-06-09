@@ -44,7 +44,7 @@ class FavoriteTvAdapter: PagedListAdapter<TvShow, FavoriteTvAdapter.FavoriteTvVi
         fun bind(tv: TvShow) {
             with(binding) {
                 tvItemTitle.text = tv.title
-                tvItemDate.text = tv.releaseDate
+                tvItemDate.text = tv.firstAirDate
                 Glide.with(itemView.context)
                     .load(Constant.POSTER_BASE_URL + tv.imagePath).into(imgPoster)
 

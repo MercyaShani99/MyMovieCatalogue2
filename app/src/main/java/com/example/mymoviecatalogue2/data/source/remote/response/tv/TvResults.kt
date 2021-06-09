@@ -13,8 +13,8 @@ data class TvResults(
     @field:SerializedName("genre_ids")
     val genre: List<Int>,
 
-    @field:SerializedName("release_date")
-    val releaseDate: String,
+    @field:SerializedName("first_air_date")
+    val firstAirDate: String,
 
     @field:SerializedName("overview")
     val overview: String,

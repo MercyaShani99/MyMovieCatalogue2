@@ -9,7 +9,7 @@ import com.example.mymoviecatalogue2.data.source.local.entity.TvShow
 
 @Database(
     entities = [Movie::class, TvShow::class],
-    version = 6,
+    version = 7,
     exportSchema = false
 )
 abstract class MovieTvDatabase: RoomDatabase() {

@@ -91,7 +91,7 @@ class MovieTvRepository private constructor(
                 for (dataTv in data) {
                     dataTv.apply {
                         val tv = TvShow(
-                            tvId, title, overview, releaseDate, imagePath
+                            tvId, title, overview, firstAirDate, imagePath
                         )
                         listTv.add(tv)
                     }
@@ -147,7 +147,7 @@ class MovieTvRepository private constructor(
                         tvId = tvId,
                         title = title,
                         overview = overview,
-                        releaseDate = releaseDate,
+                        firstAirDate = firstAirDate,
                         imagePath = imagePath
                     )
                     localDataSource.updateFavTv(detailTv, false)
@@ -185,5 +185,4 @@ class MovieTvRepository private constructor(
             .build()
         return LivePagedListBuilder(localDataSource.getFavTv(), config).build()
     }
-
 }

@@ -2,6 +2,8 @@ package com.example.mymoviecatalogue2.detail
 
 import android.util.Log
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import com.example.mymoviecatalogue2.data.MovieTvRepository
 import com.example.mymoviecatalogue2.data.source.local.entity.Movie
@@ -11,37 +13,46 @@ import com.example.mymoviecatalogue2.vo.Resource
 
 class DetailViewModel(private val movieTvRepository: MovieTvRepository) : ViewModel() {
 
-    lateinit var dataDetailMovie: LiveData<Resource<Movie>>
-    lateinit var dataDetailTv: LiveData<Resource<TvShow>>
+    private var catalogueId = MutableLiveData<Int>()
 
-    fun getDetailMovie(catalogueId: Int): LiveData<Resource<Movie>> {
-        dataDetailMovie = movieTvRepository.getDetailMovie(catalogueId)
-        return dataDetailMovie
+    fun setDetailMovie(catalogueId: Int) {
+        this.catalogueId.value = catalogueId
     }
 
-    fun getDetailTvShow(catalogueId: Int) : LiveData<Resource<TvShow>> {
-        dataDetailTv = movieTvRepository.getDetailTvShow(catalogueId)
-        return dataDetailTv
+    fun setDetailTv(catalogueId: Int) {
+        this.catalogueId.value = catalogueId
     }
+
+    var getDetailMovie: LiveData<Resource<Movie>> = Transformations.switchMap(catalogueId) {
+        movieTvRepository.getDetailMovie(it) }
+
+    var getDetailTvShow: LiveData<Resource<TvShow>> = Transformations.switchMap(catalogueId) {
+        movieTvRepository.getDetailTvShow(it) }
+
 
     fun setFavoriteMovie() {
         Log.d("setFav", "Inside ResourceMovie")
-        val dataMovie = dataDetailMovie.value
-        if(dataMovie?.data != null) {
-            Log.d("SetFav", "InsideMovie")
-            val newState = !dataMovie.data.isFav
-            movieTvRepository.setFavoriteMovie(dataMovie.data, newState)
+        val dataMovie = getDetailMovie.value
+        if (dataMovie != null) {
+            val entity = dataMovie.data
+
+            if (entity != null) {
+                val newState = !entity.isFav
+                movieTvRepository.setFavoriteMovie(entity, newState)
+                }
+            }
         }
-    }
 
     fun setFavoriteTv() {
         Log.d("setFav", "Inside ResourceMovie")
-        val dataTv = dataDetailTv.value
-        if (dataTv?.data != null) {
-            Log.d("SetFav", "InsideMovie")
-            val newState = !dataTv.data.isFav
-            movieTvRepository.setFavoriteTv(dataTv.data, newState)
+        val dataTv = getDetailTvShow.value
+        if (dataTv != null) {
+            val entity = dataTv.data
+
+            if (entity != null) {
+                val newState = !entity.isFav
+                movieTvRepository.setFavoriteTv(entity, newState)
+            }
         }
     }
-
 }

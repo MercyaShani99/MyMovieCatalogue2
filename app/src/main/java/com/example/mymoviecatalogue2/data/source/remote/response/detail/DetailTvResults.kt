@@ -13,8 +13,8 @@ data class DetailTvResults (
     @field:SerializedName("genres")
     val genre: List<MovieGenres>,
 
-    @field:SerializedName("release_date")
-    val releaseDate: String,
+    @field:SerializedName("first_air_date")
+    val firstAirDate: String,
 
     @field:SerializedName("overview")
     val overview: String,

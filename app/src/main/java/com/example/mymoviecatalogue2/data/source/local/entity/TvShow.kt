@@ -19,8 +19,8 @@ data class TvShow(
         @ColumnInfo(name = "overview")
         val overview: String?,
 
-        @ColumnInfo(name = "release_date")
-        val releaseDate: String?,
+        @ColumnInfo(name = "first_air_date")
+        val firstAirDate: String?,
 
         @ColumnInfo(name = "poster_path")
         val imagePath: String?,

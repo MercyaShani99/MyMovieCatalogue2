@@ -42,7 +42,7 @@ class TvShowAdapter : PagedListAdapter<TvShow, TvShowAdapter.CatalogueViewHolder
         fun bind(content: TvShow) {
             with(binding) {
                 tvItemTitle.text = content.title
-                tvItemDate.text = content.releaseDate
+                tvItemDate.text = content.firstAirDate
                 Glide.with(itemView.context)
                         .load(Constant.POSTER_BASE_URL + content.imagePath).into(imgPoster)
 

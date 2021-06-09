@@ -297,7 +297,7 @@ object DataDummy {
                 tvId = 71712,
                 title = "The Good Doctor",
                 listOf(18),
-                releaseDate = "2017-09-25",
+                firstAirDate = "2017-09-25",
                 overview = "A young surgeon with Savant syndrome is recruited into the surgical unit of a prestigious hospital. The question will arise: can a person who doesn't have the ability to relate to people actually save their lives",
                 imagePath = "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/6tfT03sGp9k4c0J3dypjrI8TSAI.jpg"
             )
@@ -308,7 +308,7 @@ object DataDummy {
                 tvId = 1416,
                 title = "Grey's Anatomy",
                 listOf(18),
-                releaseDate = "2005-03-27",
+                firstAirDate = "2005-03-27",
                 overview = "Follows the personal and professional lives of a group of doctors at Seattle’s Grey Sloan Memorial Hospital.",
                 imagePath = "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/clnyhPqj1SNgpAdeSS6a6fwE6Bo.jpg"
             )
@@ -321,7 +321,7 @@ object DataDummy {
                 listOf(10765,
                     9648,
                     18),
-                releaseDate = "1989-12-17",
+                firstAirDate = "1989-12-17",
                 overview = "Wanda Maximoff and Vision—two super-powered beings living idealized suburban lives—begin to suspect that everything is not as it seems.",
                 imagePath = "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/glKDfE6btIRcVB5zrjspRIs4r52.jpg"
             )
@@ -335,7 +335,7 @@ object DataDummy {
                     10759,
                     18,
                     10768),
-                releaseDate ="2021-03-19",
+                firstAirDate = "2021-03-19",
                 overview = "Following the events of “Avengers: Endgame”, the Falcon, Sam Wilson and the Winter Soldier, Bucky Barnes team up in a global adventure that tests their abilities, and their patience.",
                 imagePath= "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/6kbAMLteGO8yyewYau6bJ683sw7.jpg"
             )
@@ -349,7 +349,7 @@ object DataDummy {
                     10759,
                     18,
                     10765),
-                releaseDate = "2021-03-26",
+                firstAirDate = "2021-03-26",
                 overview = "Mark Grayson is a normal teenager except for the fact that his father is the most powerful superhero on the planet. Shortly after his seventeenth birthday, Mark begins to develop powers of his own and enters into his father’s tutelage.",
                 imagePath = "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/yDWJYRAwMNKbIYT8ZB33qy84uzO.jpg"
             )

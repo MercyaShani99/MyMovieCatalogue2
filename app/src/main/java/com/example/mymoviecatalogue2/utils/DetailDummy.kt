@@ -7,7 +7,7 @@ import com.example.mymoviecatalogue2.data.source.remote.response.detail.DetailTv
 import com.example.mymoviecatalogue2.data.source.remote.response.movie.MovieGenres
 
 object DetailDummy {
-    fun getDetailMovie(): Movie {
+    fun getDetailMovie(movieId: Int?): Movie {
         return Movie(
             399566,
             "Godzilla vs Kong",
@@ -19,7 +19,7 @@ object DetailDummy {
         )
     }
 
-    fun getDetailTv(): TvShow {
+    fun getDetailTv(tvId: Int?): TvShow {
         return TvShow(
             1416,
             "The Falcon and the Winter Soldier",
@@ -56,7 +56,7 @@ object DetailDummy {
                     name = "Drama"
                 )
             ),
-            releaseDate = "2005-03-27",
+            firstAirDate = "2005-03-27",
             imagePath = "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/clnyhPqj1SNgpAdeSS6a6fwE6Bo.jpg",
             overview = "Follows the personal and professional lives of a group of doctors at Seattle’s Grey Sloan Memorial Hospital."
         )

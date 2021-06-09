@@ -3,9 +3,11 @@ package com.example.mymoviecatalogue2.tvshow
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
+import androidx.paging.PagedList
 import com.example.mymoviecatalogue2.data.MovieTvRepository
 import com.example.mymoviecatalogue2.data.source.local.entity.TvShow
 import com.example.mymoviecatalogue2.utils.DataDummy
+import com.example.mymoviecatalogue2.vo.Resource
 import com.nhaarman.mockitokotlin2.verify
 import org.junit.Test
 
@@ -29,7 +31,10 @@ class TvShowViewModelTest {
     private lateinit var tvRepository: MovieTvRepository
 
     @Mock
-    private lateinit var observer: Observer<List<TvShow>>
+    private lateinit var observer: Observer<Resource<PagedList<TvShow>>>
+
+    @Mock
+    private lateinit var pagedList: PagedList<TvShow>
 
     @Before
     fun setUp() {
@@ -38,17 +43,17 @@ class TvShowViewModelTest {
 
     @Test
     fun getTvShow() {
+        val dummyTvShow = Resource.success(pagedList)
+        `when`(dummyTvShow.data?.size).thenReturn(10)
+        val courses = MutableLiveData<Resource<PagedList<TvShow>>>()
+        courses.value = dummyTvShow
 
-        val dummyTv = DataDummy.generateDummyTvShow()
-        val listTv = MutableLiveData<List<TvShow>>()
-        listTv.value = dummyTv
-
-        `when`(tvRepository.loadAllTvShow()).thenReturn(listTv)
-        val tvShowEntity = viewModel.getTvShow().value
-        verify(tvRepository).loadAllTvShow()
+        `when`(tvRepository.getTvPopular()).thenReturn(courses)
+        val tvShowEntity = viewModel.getTvShow().value?.data
+        verify(tvRepository).getTvPopular()
         assertEquals(10, tvShowEntity?.size)
 
         viewModel.getTvShow().observeForever(observer)
-        verify(observer).onChanged(dummyTv)
+        verify(observer).onChanged(dummyTvShow)
     }
 }

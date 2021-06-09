@@ -48,62 +48,57 @@ class MovieTvDetail : AppCompatActivity() {
 
         val extras = intent.extras
         if (extras != null) {
-            val catalogueId = extras.getInt(EXTRA_CATALOGUE)
+            val catalogueId = extras.getInt(EXTRA_CATALOGUE, 0)
             val catalogueType = extras.getString(EXTRA_TYPE)
+
             if (catalogueId != 0 && catalogueType != null) {
                 when(catalogueType) {
                     "tv" -> {
-                        getDataTv(catalogueId)
+                        detailViewModel.setDetailTv(catalogueId)
+                        detailViewModel.getDetailTvShow.observe(this, {
+                            when(it.status) {
+                                Status.LOADING -> detailMovieTvDetailBinding.progressBar.visibility = View.VISIBLE
+                                Status.SUCCESS -> {
+                                    if (it.data != null) {
+                                        detailMovieTvDetailBinding.progressBar.visibility = View.GONE
+                                        showTvShowDetail(it.data)
+                                    }
+                                }
+                                Status.ERROR -> {
+                                    detailMovieTvDetailBinding.progressBar.visibility = View.GONE
+                                    Toast.makeText(applicationContext, "Data Failed to Load", Toast.LENGTH_SHORT).show()
+                                }
+
+                            }
+                        })
                     }
                     "movie" -> {
-                        getDataMovie(catalogueId)
+                        detailViewModel.setDetailMovie(catalogueId)
+                        detailViewModel.getDetailMovie.observe(this, {
+                            when(it.status) {
+                                Status.LOADING -> detailMovieTvDetailBinding.progressBar.visibility = View.VISIBLE
+                                Status.SUCCESS -> {
+                                    if (it.data != null) {
+                                        detailMovieTvDetailBinding.progressBar.visibility = View.GONE
+                                        showMovieDetail(it.data)
+                                    }
+                                }
+                                Status.ERROR -> {
+                                    detailMovieTvDetailBinding.progressBar.visibility = View.GONE
+                                    Toast.makeText(applicationContext, "Data Failed to Load", Toast.LENGTH_SHORT).show()
+                                }
+
+                            }
+                        })
                     }
                 }
             }
         }
     }
 
-    private fun getDataMovie(idMovie: Int) {
-        detailViewModel.getDetailMovie(idMovie).observe(this, {
-            when(it.status) {
-                Status.LOADING -> detailMovieTvDetailBinding.progressBar.visibility = View.VISIBLE
-                Status.SUCCESS -> {
-                    if (it.data != null) {
-                        detailMovieTvDetailBinding.progressBar.visibility = View.GONE
-                        showMovieDetail(it.data)
-                    }
-                }
-                Status.ERROR -> {
-                    detailMovieTvDetailBinding.progressBar.visibility = View.GONE
-                    Toast.makeText(applicationContext, "Data Failed to Load", Toast.LENGTH_SHORT).show()
-                }
-
-            }
-        })
-    }
-
-    private fun getDataTv(idTv: Int) {
-        detailViewModel.getDetailTvShow(idTv).observe(this, {
-            when(it.status) {
-                Status.LOADING -> detailMovieTvDetailBinding.progressBar.visibility = View.VISIBLE
-                Status.SUCCESS -> {
-                    if (it.data != null) {
-                        detailMovieTvDetailBinding.progressBar.visibility = View.GONE
-                        showTvShowDetail(it.data)
-                    }
-                }
-                Status.ERROR -> {
-                    detailMovieTvDetailBinding.progressBar.visibility = View.GONE
-                    Toast.makeText(applicationContext, "Data Failed to Load", Toast.LENGTH_SHORT).show()
-                }
-
-            }
-        })
-    }
-
     private fun showTvShowDetail(tvShow: TvShow) {
         detailMovieTvDetailBinding.textTitle.text = tvShow.title
-        detailMovieTvDetailBinding.textDate.text = tvShow.releaseDate
+        detailMovieTvDetailBinding.textDate.text = tvShow.firstAirDate
         detailMovieTvDetailBinding.textDescription.text = tvShow.overview
         Glide.with(this)
                 .load(Constant.POSTER_BASE_URL + tvShow.imagePath)
@@ -126,7 +121,7 @@ class MovieTvDetail : AppCompatActivity() {
         this.menu = menu
         when(intent.getStringExtra(EXTRA_TYPE)) {
             "tv" -> {
-                detailViewModel.dataDetailTv.observe(this, { detailTv ->
+                detailViewModel.getDetailTvShow.observe(this, { detailTv ->
                     if (detailTv != null) {
                         when(detailTv.status) {
                             Status.LOADING -> detailMovieTvDetailBinding.progressBar.visibility = View.GONE
@@ -145,7 +140,7 @@ class MovieTvDetail : AppCompatActivity() {
                 })
             }
             "movie" -> {
-                detailViewModel.dataDetailMovie.observe(this, { detailMovie ->
+                detailViewModel.getDetailMovie.observe(this, { detailMovie ->
                     if (detailMovie != null) {
                         when(detailMovie.status) {
                             Status.LOADING -> detailMovieTvDetailBinding.progressBar.visibility = View.GONE
