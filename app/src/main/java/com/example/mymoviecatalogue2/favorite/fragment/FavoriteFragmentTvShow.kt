@@ -28,7 +28,7 @@ class FavoriteFragmentTvShow : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        itemTouchHelper.attachToRecyclerView(fragmentFavoriteTvBinding.rvTvShow)
+        itemTouchHelper.attachToRecyclerView(fragmentFavoriteTvBinding.rvFavTvShow)
 
         if (activity != null) {
             val factory = ViewModelFactory.getInstance(requireActivity())
@@ -41,7 +41,7 @@ class FavoriteFragmentTvShow : Fragment() {
                 favoriteTvAdapter.submitList(tv)
             })
 
-            with(fragmentFavoriteTvBinding.rvTvShow) {
+            with(fragmentFavoriteTvBinding.rvFavTvShow) {
                 layoutManager = LinearLayoutManager(context)
                 setHasFixedSize(true)
                 this.adapter = favoriteTvAdapter

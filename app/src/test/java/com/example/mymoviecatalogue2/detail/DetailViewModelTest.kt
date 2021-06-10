@@ -43,11 +43,12 @@ class DetailViewModelTest {
     @Before
     fun setUpM() {
         detailViewModel = DetailViewModel(movieTvRepository)
-        movId?.let { detailViewModel.setDetailMovie(it) }
     }
 
     @Test
     fun getDetailMovie() {
+        movId?.let { detailViewModel.setDetailMovie(it) }
+
         val moviesDetail = Resource.success(DetailDummy.getDetailMovie(movId))
         val course = MutableLiveData<Resource<Movie>>()
         course.value = moviesDetail
@@ -61,6 +62,8 @@ class DetailViewModelTest {
 
     @Test
     fun setFavoriteMovie() {
+        movId?.let { detailViewModel.setDetailMovie(it) }
+
         val favMovDetail = Resource.success(DataDummy.generateDummyMovie()[0])
         val favm = MutableLiveData<Resource<Movie>>()
         favm.value = favMovDetail
@@ -80,11 +83,12 @@ class DetailViewModelTest {
     @Before
     fun setUpT() {
         detailViewModel = DetailViewModel(movieTvRepository)
-        tvsId?.let { detailViewModel.setDetailTv(it) }
     }
 
     @Test
     fun getDetailTv() {
+        tvsId?.let { detailViewModel.setDetailTv(it) }
+
         val tvsDetail = Resource.success(DetailDummy.getDetailTv(tvsId))
         val course = MutableLiveData<Resource<TvShow>>()
         course.value = tvsDetail
@@ -98,6 +102,8 @@ class DetailViewModelTest {
 
     @Test
     fun setFavoriteTv() {
+        tvsId?.let { detailViewModel.setDetailTv(it) }
+
         val favTvDetail = Resource.success(DataDummy.generateDummyTvShow()[0])
         val favt = MutableLiveData<Resource<TvShow>>()
         favt.value = favTvDetail

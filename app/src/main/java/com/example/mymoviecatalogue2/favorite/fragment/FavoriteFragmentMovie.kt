@@ -28,7 +28,7 @@ class FavoriteFragmentMovie : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        itemTouchHelper.attachToRecyclerView(fragmentFavoriteMovieBinding.rvMovie)
+        itemTouchHelper.attachToRecyclerView(fragmentFavoriteMovieBinding.rvFavMovie)
 
         if (activity != null) {
 
@@ -43,7 +43,7 @@ class FavoriteFragmentMovie : Fragment() {
 
             })
 
-            with(fragmentFavoriteMovieBinding.rvMovie) {
+            with(fragmentFavoriteMovieBinding.rvFavMovie) {
                 layoutManager = LinearLayoutManager(context)
                 setHasFixedSize(true)
                 this.adapter = favoriteMovieAdapter

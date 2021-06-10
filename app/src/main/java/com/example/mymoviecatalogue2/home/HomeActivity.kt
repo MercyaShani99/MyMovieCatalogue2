@@ -28,7 +28,7 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.action_favorite -> {
+            R.id.button_favorite -> {
                 startActivity(Intent(this, FavoriteActivity::class.java))
             }
         }
@@ -36,7 +36,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.option_menu, menu)
+        menuInflater.inflate(R.menu.fav_menu, menu)
         return super.onCreateOptionsMenu(menu)
     }
 }
